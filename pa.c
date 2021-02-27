@@ -19,7 +19,7 @@ int createDirectories(struct Estudiantes *Student_list){
 
 void signal_handler(int sig)
 {
-   printf("[PA %d] terminated (SIGINT).\n", getpid());
+   printf("[PA %d]: terminated (SIGINT).\n", getpid());
    exit(EXIT_SUCCESS);
 }
 
@@ -28,7 +28,7 @@ void install_signal_handler()
 {
    if (signal(SIGINT, signal_handler) == SIG_ERR)
    {
-      fprintf(stderr, "[PA %d] Error installing handler: %s.\n", 
+      fprintf(stderr, "[PA %d]: Error installing handler: %s.\n", 
 	     getpid(), strerror(errno));    
       exit(EXIT_FAILURE);
     }
@@ -43,7 +43,7 @@ int main(int argc, char const *argv[]) {
 
   createDirectories(Student_list);
 
-  printf("[PA %d] terminates.\n", getpid());
+  printf("[PA %d]: terminates.\n", getpid());
 
   return EXIT_SUCCESS;
 }

@@ -10,6 +10,9 @@
 #define FILE_NAME "estudiantes.txt"
 #define n_STUDENTS 15
 
+#define pathPA "./pa"
+#define classPA "PA"
+
 enum ExamModel {A,B,C};
 
 struct Estudiantes{

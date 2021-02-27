@@ -17,3 +17,13 @@ Instalado el manejador de señal.
 **Manager**  
 Instalado el manejador de señal.  
 
+### v1.2  
+
+**Utils**  
+Definida la ruta y clase PA.  
+
+**Manager**  
+Creado el proceso PA.  
+Añadido fichero log.txt  
+
+
