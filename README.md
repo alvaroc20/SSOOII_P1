@@ -27,3 +27,14 @@ Creado el proceso PA.
 Añadido fichero log.txt  
 
 
+### v2.1  
+**Utils**  
+Añadidos los modelos PDFs.  
+
+**PB**  
+Instalado el manejador de señal.  
+Copia los exámenes en el subdirectorio que corresponda al DNI del estudiante.  
+
+**Manager**  
+Creado el proceso PB y PC además de la espera.
+

@@ -1,16 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <string.h>
-#include <errno.h>
-#include <unistd.h>
-
 #include "utils.c"
 
-pid_t pidA;
+pid_t pidA, pidB, pidC;
 int status;
-//char message;
 
 /*************************** Process Management **************************/
 void install_signal_handler();
@@ -27,11 +18,25 @@ void logFile(char message[]);
 /*************************** Main Function **************************/
 
 int main(){
-   logFile("*********** System Log *************\n");
    install_signal_handler(SIGINT, install_signal_handler);
+
+   /*PA process creation, waiting for completion and log writing*/
+   logFile("*********** System Log *************\n");
    pidA = create_single_process(pathPA, classPA);
    waitpid(pidA, &status, 0);
    logFile("Directory creation finished.\n");
+
+   /*Create PB and PC */
+   pidB = create_single_process(pathPB, classPB);
+   pidC = create_single_process(pathPC, classPC);
+
+   /* Waiting for PB completion and log writing */
+   waitpid(pidB, &status, 0);
+   logFile("Copying of examination models, finalised.\n");
+
+   /*Waiting for PC completion and log writing*/
+   waitpid(pidC, &status, 0);
+   logFile("Creation of files with the grade necessary to reach the cut-off mark, finalised.\n");
 }
 
 

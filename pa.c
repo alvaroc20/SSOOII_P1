@@ -1,8 +1,9 @@
 #include "utils.c"
 
-/* 
-Creacion de directorios segun los DNIs que obtenemos del fichero
-*/
+/*************************** Process Management **************************/
+
+
+/*Creation of directories according to the DNIs we obtain from the file.*/
 int createDirectories(struct Estudiantes *Student_list){
   char buffer[1024];
   struct stat st;
@@ -34,7 +35,10 @@ void install_signal_handler()
     }
 }
 
-int main(int argc, char const *argv[]) {
+
+/*************************** Main Function **************************/
+
+int main() {
   install_signal_handler();
 
   struct Estudiantes *Student_list;
