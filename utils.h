@@ -10,7 +10,8 @@
 #include <sys/wait.h>
 
 #define FILE_NAME "estudiantes.txt"
-#define n_STUDENTS 15
+#define g_nSTUDENTS 15
+#define g_MAXNOTE 10
 
 #define pathPA "./pa"
 #define classPA "PA"
@@ -24,6 +25,9 @@
 #define model_A "MODELOA.pdf"
 #define model_B "MODELOB.pdf"
 #define model_C "MODELOC.pdf"
+
+#define P_READ 0
+#define P_WRITE 1
 
 enum ExamModel {A,B,C};
 

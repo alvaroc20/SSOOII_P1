@@ -6,3 +6,5 @@ Directory creation finished.
 Copying of examination models, finalised.
 
 Creation of files with the grade necessary to reach the cut-off mark, finalised.
+
+The average students grade result is: 6 

@@ -1,5 +1,46 @@
 #include "utils.c"
 
+/**************************************************************************
+ * Project                : SSOOII Practice 1
+ * 
+ * 
+ * Program Name           : pb.c
+ * 
+ * 
+ * Author                 : Álvaro Cerdá
+ * 
+ * 
+ * Date Created           : 27/02/2021
+ * 
+ * 
+ * Description            : Extract the model of the student's exam and 
+ *                          copy the .pdf model corresponding to each DNI.
+ * ************************************************************************/
+
+
+/*************************** Process Management **************************/
+void signal_handler(int sig);
+void install_signal_handler();
+char *modelExam(char model);
+void copyExams(struct Estudiantes *p_student_list);
+
+
+/*************************** Main Function **************************/
+
+int main(){
+    install_signal_handler();
+
+
+    struct Estudiantes *p_student_list;
+    p_student_list = (struct Estudiantes*) malloc(g_nSTUDENTS * sizeof(struct Estudiantes));
+    p_student_list = readEstudiantes(p_student_list);
+
+    copyExams(p_student_list);
+
+    printf("[PB %d]: terminates.\n", getpid());
+    return EXIT_SUCCESS;
+}
+
 /*************************** Process Management **************************/
 
 void signal_handler(int sig)
@@ -19,7 +60,8 @@ void install_signal_handler()
     }
 }
 
-char *modelExam(char model){
+char *modelExam(char model)
+{
 
     char *exam;
     switch(model){
@@ -37,31 +79,17 @@ char *modelExam(char model){
 }
 
 
-void copyExams(struct Estudiantes *Student_list){
+void copyExams(struct Estudiantes *p_student_list)
+{
 
     int i = 0;
     char *exam;
     char command[512];
 
-    for(i=0; i < n_STUDENTS; i++){
-        exam = modelExam(Student_list[i].model);
-        snprintf(command, sizeof (command), "/bin/cp %s %s", exam, Student_list[i].dni);
+    for(i=0; i < g_nSTUDENTS; i++){
+        exam = modelExam(p_student_list[i].model);
+        snprintf(command, sizeof (command), "/bin/cp %s %s", exam, p_student_list[i].dni);
         system(command);
     }
 }
 
-/*************************** Main Function **************************/
-
-int main(){
-    install_signal_handler();
-
-
-    struct Estudiantes *Student_list;
-    Student_list = (struct Estudiantes*) malloc(n_STUDENTS * sizeof(struct Estudiantes));
-    Student_list = readEstudiantes(Student_list);
-
-    copyExams(Student_list);
-
-    printf("[PB %d]: terminates.\n", getpid());
-    return EXIT_SUCCESS;
-}

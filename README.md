@@ -36,5 +36,14 @@ Instalado el manejador de señal.
 Copia los exámenes en el subdirectorio que corresponda al DNI del estudiante.  
 
 **Manager**  
-Creado el proceso PB y PC además de la espera.
+Creado el proceso PB y PC además de la espera.  
+
+### v3.1  
+**PC**  
+Creado el PC por completo.   
+
+**Manager**  
+Creada la tubería necesaria para comunicarse con el proceso C.  
+
+*Mejora de legibilidad en todos los procesos y manager*
 
