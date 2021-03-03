@@ -100,11 +100,13 @@ void putNoteInDir(char *dni, int note)
     FILE *f;
     
     char text[] = "La nota que debes obtener en este nuevo examen para superar la prueba es ";
-    char dir[sizeof(dni) + sizeof(text)] = "";
-    sprintf(text, "%s%i", text, note);
+    char dir[N_STUDENTS_DIR];
 
+    sprintf(text, "%s%i", text, note);
+    strcpy(dir, DIR_STUDENTS);
     strcat(dir, dni);
     strcat(dir, "/note.txt");
+    
     f = fopen(dir, "wb");
     fputs(text, f);
 

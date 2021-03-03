@@ -22,6 +22,7 @@
 int createDirectories(struct Estudiantes *p_student_list);
 void signal_handler(int sig);
 void install_signal_handler();
+void createDirStudent();
 
 
 /*************************** Main Function **************************/
@@ -33,6 +34,7 @@ int main() {
   p_student_list = (struct Estudiantes*) malloc(g_nSTUDENTS * sizeof(struct Estudiantes));
   p_student_list = readEstudiantes(p_student_list);
 
+  createDirStudent(p_student_list);
   createDirectories(p_student_list);
 
   printf("[PA %d]: terminates.\n", getpid());
@@ -43,17 +45,28 @@ int main() {
 
 
 /*************************** Process Management **************************/
-/*Creation of directories according to the DNIs we obtain from the file.*/
+void createDirStudent()
+{
+  struct stat st;
+
+   if (stat(DIR_STUDENTS, &st) == -1)
+   {
+      mkdir(DIR_STUDENTS, 0755);
+   }
+}
 int createDirectories(struct Estudiantes *p_student_list)
 {
   char buffer[1024];
+  char dir[N_STUDENTS_DIR];
   struct stat st;
   int i;
 
   for(i=0; i < g_nSTUDENTS; i++){
-    if (stat(p_student_list[i].dni, &st) == -1)
+      strcpy(dir, DIR_STUDENTS);
+      strcat(dir,p_student_list[i].dni);
+    if (stat(dir, &st) == -1)
    {
-      mkdir(p_student_list[i].dni, 0755);
+      mkdir(dir, 0755);
    }
   }
   return EXIT_SUCCESS;

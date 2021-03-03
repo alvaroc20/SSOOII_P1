@@ -45,5 +45,13 @@ Creado el PC por completo.
 **Manager**  
 Creada la tubería necesaria para comunicarse con el proceso C.  
 
-*Mejora de legibilidad en todos los procesos y manager*
+*Mejora de legibilidad en todos los procesos y manager*  
+
+### v3.2  
+Creación de carpetas src/ e include/ para la mejora de organización de los archivos creados, además de una carpeta data/ donde se almacenarán los datos que realizará el programa. Por último, se crean las carpetas exec/ y obj/. Con esta actualización queda todo de manera más organizada.  
+
+Añado Makefile para automatizar la compilación y puesta en marcha del programa.  
+
+**Utils**  
+Añadido if-def
 

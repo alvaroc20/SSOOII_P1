@@ -85,11 +85,18 @@ void copyExams(struct Estudiantes *p_student_list)
     int i = 0;
     char *exam;
     char command[512];
+    char dir[N_STUDENTS_DIR];
 
     for(i=0; i < g_nSTUDENTS; i++){
         exam = modelExam(p_student_list[i].model);
-        snprintf(command, sizeof (command), "/bin/cp %s %s", exam, p_student_list[i].dni);
+
+        strcpy(dir,DIR_STUDENTS);
+        strcat(dir,p_student_list[i].dni);
+        strcat(dir,"/");
+
+        snprintf(command, sizeof (command), "/bin/cp %s %s", exam, dir);
         system(command);
+        /*comprobar que se haya realizado correctamente*/
     }
 }
 
