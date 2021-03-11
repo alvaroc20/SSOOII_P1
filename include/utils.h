@@ -1,5 +1,3 @@
-#ifdef __UTILS_H__
-#define __UTILS_H__
 
 #include <errno.h>
 #include <signal.h>
@@ -24,6 +22,9 @@
 #define pathPC "./exec/pc"
 #define classPC "PC"
 
+#define pathPD "./exec/pd"
+#define classPD "PD"
+
 #define model_A "MODELOA.pdf"
 #define model_B "MODELOB.pdf"
 #define model_C "MODELOC.pdf"
@@ -43,4 +44,3 @@ struct Estudiantes{
     int note;
 };
 
-#endif

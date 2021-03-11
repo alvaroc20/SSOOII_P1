@@ -21,7 +21,7 @@ void signal_handler(int sig);
 pid_t create_single_process(char *path, char *str_process_class, const char *arg);
 void logFile(char message[]);
 void readPipe(int fd[]);
-
+void createPD();
 
 
 
@@ -84,8 +84,9 @@ void signal_handler(int sig)
    switch (sig)
    {
       case SIGINT:
-         printf("[MANAGER %d]: terminated (SIGINT).\n", getpid());
          printf("\n[MANAGER]: Program termination (Ctrl + C).\n");
+
+         createPD();
 
          exit(EXIT_SUCCESS);
     }
@@ -95,7 +96,7 @@ void install_signal_handler()
 {
    if (signal(SIGINT, signal_handler) == SIG_ERR)
    {
-      fprintf(stderr, "[MANAGER %d]: Error installing handler: %s.\n", 
+      fprintf(stderr, "\n[MANAGER %d]: Error installing handler: %s.\n", 
 	      getpid(), strerror(errno));    
       exit(EXIT_FAILURE);
    }
@@ -156,6 +157,21 @@ pid_t create_single_process(char *path, char *str_process_class, const char *arg
     printf("[MANAGER]: %s process created.\n", str_process_class);
     sleep(1);
     return pid;
+}
+
+
+void createPD()
+{
+   pid_t pd;
+   pd = create_single_process(pathPD, classPD, NULL);
+
+   if(pd == -1){
+      fprintf(stderr, "[MANAGER] Error creating PD process: %s.\n", strerror(errno));
+      exit(EXIT_FAILURE);
+   }
+
+   wait(NULL);
+   logFile("A voluntary interruption has taken place by Ctrl+C. The directory containing student data has been deleted.\n");
 }
 
 

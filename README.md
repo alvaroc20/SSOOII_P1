@@ -55,3 +55,7 @@ Añado Makefile para automatizar la compilación y puesta en marcha del programa
 **Utils**  
 Añadido if-def
 
+### v4.1  
+**PD**  
+Creado y finalizado el PD eliminando el directorio donde se almacenan los datos de los estudiantes (/data) por completo.  
+
