@@ -33,6 +33,9 @@
 #define P_WRITE 1
 
 #define DIR_STUDENTS "data/"
+#define DIR_BACKUP "backup/"
+#define DIR_INCLUDES "include/"
+#define DIR_SRC "src/"
 #define FILE_NAME "estudiantes.txt"
 #define N_STUDENTS_DIR 50
 

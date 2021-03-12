@@ -67,6 +67,8 @@ int main()
 	close(fd[P_READ]);
 	close(fd[P_WRITE]);
 
+   logFile("********** END OF PROGRAM **********\n");
+
    return EXIT_SUCCESS;
 }
 
@@ -166,7 +168,7 @@ void createPD()
    pd = create_single_process(pathPD, classPD, NULL);
 
    if(pd == -1){
-      fprintf(stderr, "[MANAGER] Error creating PD process: %s.\n", strerror(errno));
+      fprintf(stderr, "[MANAGER]: Error creating PD process: %s.\n", strerror(errno));
       exit(EXIT_FAILURE);
    }
 

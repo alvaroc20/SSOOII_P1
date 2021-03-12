@@ -3,6 +3,7 @@ DIREXE := exec/
 DIRHEA := include/
 DIRSRC := src/
 DIRSTU := data/
+DIRBCKUP := backup/
 LOGTXT := log.txt
 LDLIBS := -pthread -lrt -lm
 
@@ -10,9 +11,9 @@ CFLAGS := -I$(DIRHEA) -c -Wall -ansi
 IFLAGS :=  -c -Wall -ansi -g
 CC := gcc
 
-all: dirs manager pa pb pc pd
+all: dirs manager pa pb pc pd demon
 dirs:
-	mkdir -p $(DIROBJ) $(DIREXE)
+	mkdir -p $(DIROBJ) $(DIREXE) $(DIRBCKUP)
 
 manager: $(DIROBJ)manager.o 
 	$(CC) -o $(DIREXE)$@ $^ $(LDLIBS) 
@@ -29,12 +30,15 @@ pc: $(DIROBJ)pc.o
 pd: $(DIROBJ)pd.o 
 	$(CC) -o $(DIREXE)$@ $^ 
 
+demon: $(DIROBJ)demon.o 
+	$(CC) -o $(DIREXE)$@ $^ 
+
 
 $(DIROBJ)%.o: $(DIRSRC)%.c
 	$(CC) $(CFLAGS) $^ -o $@ 
 
-test:
-	./$(DIREXE)manager
+run:
+	./$(DIREXE)manager ; ./$(DIREXE)demon &
 
 clean : 
-	rm -rf *~ core $(DIROBJ) $(DIREXE) $(DIRHEA)*~ $(DIRSRC)*~ $(DIRSTU) $(LOGTXT)
+	rm -rf *~ core $(DIROBJ) $(DIREXE) $(DIRHEA)*~ $(DIRSRC)*~ $(DIRSTU) $(LOGTXT) $(DIRBCKUP)
