@@ -22,7 +22,7 @@
 
 /*************************** Process Management **************************/
 void backup();
-
+int checkFile();
 
 /*************************** Main Function **************************/
 int main()
@@ -37,6 +37,8 @@ int main()
 
 
 /*************************** Process Management **************************/
+
+/*Check if the data/ directory exists*/
 int checkFile()
 {
     FILE *f;
@@ -49,6 +51,7 @@ int checkFile()
     return 0;
 }
 
+/*Remove src/ include and data/ directories*/
 void backup()
 {
     char command[512];

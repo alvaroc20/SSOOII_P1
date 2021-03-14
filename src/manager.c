@@ -104,7 +104,7 @@ void install_signal_handler()
    }
 }
 
-
+/*Opening and writing a log file*/
 void logFile(char message[])
 {
    FILE *log;
@@ -122,6 +122,7 @@ void logFile(char message[])
   fclose(log);
 }
 
+/*Pipe reading through channel 0*/
 void readPipe(int fd[])
 {
 	char text[1024] = "The average students grade result is:";

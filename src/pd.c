@@ -56,7 +56,7 @@ void install_signal_handler()
     }
 }
 
-
+/*Deletes the data/ folder where all programme data is stored*/
 void removeAll()
 {
   char command[30];

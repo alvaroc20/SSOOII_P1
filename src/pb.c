@@ -32,7 +32,7 @@ int main(){
 
 
     struct Estudiantes *p_student_list;
-    p_student_list = (struct Estudiantes*) malloc(g_nSTUDENTS * sizeof(struct Estudiantes));
+    p_student_list = (struct Estudiantes*) malloc(nSTUDENTS * sizeof(struct Estudiantes));
     p_student_list = readEstudiantes(p_student_list);
 
     copyExams(p_student_list);
@@ -78,7 +78,7 @@ char *modelExam(char model)
     return exam;
 }
 
-
+/*Concatenates the DNI to the directory and copies the exam using command*/
 void copyExams(struct Estudiantes *p_student_list)
 {
 
@@ -87,7 +87,7 @@ void copyExams(struct Estudiantes *p_student_list)
     char command[512];
     char dir[N_STUDENTS_DIR];
 
-    for(i=0; i < g_nSTUDENTS; i++){
+    for(i=0; i < nSTUDENTS; i++){
         exam = modelExam(p_student_list[i].model);
 
         strcpy(dir,DIR_STUDENTS);

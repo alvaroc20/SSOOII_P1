@@ -31,7 +31,7 @@ int main() {
   install_signal_handler();
 
   struct Estudiantes *p_student_list;
-  p_student_list = (struct Estudiantes*) malloc(g_nSTUDENTS * sizeof(struct Estudiantes));
+  p_student_list = (struct Estudiantes*) malloc(nSTUDENTS * sizeof(struct Estudiantes));
   p_student_list = readEstudiantes(p_student_list);
 
   createDirStudent(p_student_list);
@@ -45,6 +45,8 @@ int main() {
 
 
 /*************************** Process Management **************************/
+
+/*Creates the data/ directory where all data generated during the programme is stored*/
 void createDirStudent()
 {
   struct stat st;
@@ -54,6 +56,8 @@ void createDirStudent()
       mkdir(DIR_STUDENTS, 0755);
    }
 }
+
+/*Create a subdirectory for each student*/
 int createDirectories(struct Estudiantes *p_student_list)
 {
   char buffer[1024];
@@ -61,7 +65,7 @@ int createDirectories(struct Estudiantes *p_student_list)
   struct stat st;
   int i;
 
-  for(i=0; i < g_nSTUDENTS; i++){
+  for(i=0; i < nSTUDENTS; i++){
       strcpy(dir, DIR_STUDENTS);
       strcat(dir,p_student_list[i].dni);
     if (stat(dir, &st) == -1)

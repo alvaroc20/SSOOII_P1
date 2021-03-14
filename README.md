@@ -64,3 +64,5 @@ Creado y finalizado el PD eliminando el directorio donde se almacenan los datos 
 Creado el proceso demonio que funcionará en segundo plano realizando copias en la carpeta backup de todos los archivos del programa (a excepción del fichero txt).  
 Para ver todos los procesos podemos usar `ps aux`. Una vez veamos el PID al que corresponde el proceso demon, entonces podremos matar el proceso mediante `kill -TERM PID`.
 
+### v5.2  
+Correción de pequeños errores.

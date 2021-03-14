@@ -40,7 +40,7 @@ int main(int argc, char *argv[]){
     check(argv, &fd);
 
     struct Estudiantes *p_student_list;
-    p_student_list = (struct Estudiantes*) malloc(g_nSTUDENTS * sizeof(struct Estudiantes));
+    p_student_list = (struct Estudiantes*) malloc(nSTUDENTS * sizeof(struct Estudiantes));
     p_student_list = readEstudiantes(p_student_list);
 
     av_score = averageScore(p_student_list);
@@ -70,6 +70,7 @@ void install_signal_handler()
     }
 }
 
+/*Send through the pipe*/
 void sendByPipe(int fd, int av_score)
 {
     
@@ -81,20 +82,22 @@ void sendByPipe(int fd, int av_score)
     }
 }
 
+/*Generates the average score of the first exam*/
 int averageScore(struct Estudiantes *p_student_list)
 {
     int i;
     int av_score = 0;
 
-    for(i=0; i < g_nSTUDENTS; i++){
+    for(i=0; i < nSTUDENTS; i++){
         av_score += p_student_list[i].note;
     }
 
-    av_score /= g_nSTUDENTS;
+    av_score /= nSTUDENTS;
 
     return av_score;
 }
 
+/*Concatenates the DNI to the directory and generates a note.txt file with your previously calculated note*/    
 void putNoteInDir(char *dni, int note)
 {
     FILE *f;
@@ -113,12 +116,13 @@ void putNoteInDir(char *dni, int note)
     fclose(f);
 }
 
+/*Calculate the grade needed for the next exam for each student*/
 void gradebook(struct Estudiantes *p_student_list)
 {
     int neededNote, i;
 
-    for(i=0; i < g_nSTUDENTS; i++){
-        neededNote = g_MAXNOTE - p_student_list[i].note;
+    for(i=0; i < nSTUDENTS; i++){
+        neededNote = MAXNOTE - p_student_list[i].note;
         putNoteInDir(p_student_list[i].dni, neededNote);
     }
 }

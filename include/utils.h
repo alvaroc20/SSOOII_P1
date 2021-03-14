@@ -10,8 +10,8 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 
-#define g_nSTUDENTS 15
-#define g_MAXNOTE 10
+#define nSTUDENTS 15
+#define MAXNOTE 10
 
 #define pathPA "./exec/pa"
 #define classPA "PA"
@@ -36,6 +36,7 @@
 #define DIR_BACKUP "backup/"
 #define DIR_INCLUDES "include/"
 #define DIR_SRC "src/"
+
 #define FILE_NAME "estudiantes.txt"
 #define N_STUDENTS_DIR 50
 
