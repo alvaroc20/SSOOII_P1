@@ -1,6 +1,3 @@
-/*He quitado el if-def porque sino al realizar make me daba errores al no obtener los datos de aqui,
-pero contaba con ponerlo. Luego en alguna tutoria o rato te lo preguntare, pero es la fecha de la entrega
-y no quiero molestar a estas horas Javier*/
 
 #include <errno.h>
 #include <signal.h>
