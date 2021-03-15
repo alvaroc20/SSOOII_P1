@@ -60,7 +60,6 @@ void createDirStudent()
 /*Create a subdirectory for each student*/
 int createDirectories(struct Estudiantes *p_student_list)
 {
-  char buffer[1024];
   char dir[N_STUDENTS_DIR];
   struct stat st;
   int i;

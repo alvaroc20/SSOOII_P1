@@ -40,8 +40,6 @@
 #define FILE_NAME "estudiantes.txt"
 #define N_STUDENTS_DIR 50
 
-enum ExamModel {A,B,C};
-
 struct Estudiantes{
     char dni[9];
     char model;

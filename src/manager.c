@@ -18,7 +18,7 @@
 /*************************** Process Management **************************/
 void install_signal_handler();
 void signal_handler(int sig);
-pid_t create_single_process(char *path, char *str_process_class, const char *arg);
+pid_t create_single_process(char *p_path, char *p_str_proccess_class, const char *arg);
 void logFile(char message[]);
 void readPipe(int fd[]);
 void createPD();
@@ -125,18 +125,19 @@ void logFile(char message[])
 /*Pipe reading through channel 0*/
 void readPipe(int fd[])
 {
-	char text[1024] = "The average students grade result is:";
+	char text[256] = "The average students grade result is:";
    char buffer[256] = "";
+   char log[1024] = "";
 	
 	if(read(fd[0], buffer, sizeof(buffer)+1) == -1){
       printf("Pipe reading error\n");
    }
-	sprintf(text,"%s %s \n",text, buffer);
-   logFile(text);
+	sprintf(log,"%s %s \n",text, buffer);
+   logFile(log);
 }
 
 
-pid_t create_single_process(char *path, char *str_process_class, const char *arg)
+pid_t create_single_process(char *p_path, char *p_str_proccess_class, const char *arg)
 {
     
     pid_t pid;
@@ -144,20 +145,20 @@ pid_t create_single_process(char *path, char *str_process_class, const char *arg
     switch(pid = fork()){
 
       case -1:
-         fprintf(stderr, "[MANAGER]: Error creating %s process: %s. \n", str_process_class, strerror(errno));
+         fprintf(stderr, "[MANAGER]: Error creating %s process: %s. \n", p_str_proccess_class, strerror(errno));
          exit(EXIT_FAILURE);
 
          /*Child Process*/
       case 0:
-         if(execl(path, str_process_class, arg, NULL) == -1){
-            fprintf(stderr, "[MANAGER]: Error using execl() in %s process: %s. \n", str_process_class, strerror(errno));
+         if(execl(p_path, p_str_proccess_class, arg, NULL) == -1){
+            fprintf(stderr, "[MANAGER]: Error using execl() in %s process: %s. \n", p_str_proccess_class, strerror(errno));
             exit(EXIT_FAILURE);
          }
     }
     
 
    /* Parent process */
-    printf("[MANAGER]: %s process created.\n", str_process_class);
+    printf("[MANAGER]: %s process created.\n", p_str_proccess_class);
     sleep(1);
     return pid;
 }

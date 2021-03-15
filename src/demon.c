@@ -43,7 +43,7 @@ int checkFile()
 {
     FILE *f;
 
-    if(f = fopen(DIR_STUDENTS, "r")){
+    if((f = fopen(DIR_STUDENTS, "r")) != NULL){
         fclose(f);
         return 1;
     }
