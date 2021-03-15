@@ -41,4 +41,7 @@ run:
 	./$(DIREXE)manager ; ./$(DIREXE)demon &
 
 clean : 
-	rm -rf *~ core $(DIROBJ) $(DIREXE) $(DIRHEA)*~ $(DIRSRC)*~ $(DIRSTU) $(LOGTXT) $(DIRBCKUP)
+	rm -rf *~ core $(DIROBJ) $(DIREXE) $(DIRHEA)*~ $(DIRSRC)*~ $(DIRSTU) $(LOGTXT)
+
+cleanBackup:
+	rm -rf $(DIRBCKUP)

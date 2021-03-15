@@ -1,6 +1,24 @@
 # SSOOII_P1
 Práctica 1 de la asignatura SSOOII tratando llamadas al sistema y señales.  
 
+## Manual de Usuario  
+Para la compilación y posterior funcionamiento de la práctica he creado un Makefile.
+
+**Crear directorios**  
+Se requieren ciertos directorios para guardar los códigos objeto, los archivos ejecutables y el backup, que podremos generar mediante `make dirs`.
+
+**Compilar**  
+Para compilar todos los procesos podremos hace uso de `make all` (incluye dirs), donde compilará *manager, pa, pb, pc, pd, demon*. Si solo se desea compilar uno de ellos, entonces podremos hacer uso de `make opcion` donde *opcion* es uno de los nombres de los procesos citados en cursiva anteriormente.
+
+**Ejecutar**  
+Para ejecutar el programa, previamente deben estar compilados todos los procesos, solo ejecutaremos el proceso *manager* que se encargará de hacer llamadas a todos los procesos necesarios mediante `make run`. Al ejecutar este comando, también realiza la llamada al proceso demonio que trabajará en segundo plano y solo podremos "matar" desde el intérprete de comandos.
+
+Para realizar esta última acción, podremos ver los procesos abiertos mediante `ps aux` donde veremos el PID de nuestro proceso demonio, y mediante `kill -TERM PID` donde *PID* es el PID visto anteriormente, podremos deshacernos de él.
+
+**Limpieza de archivos**  
+Para eliminar todos los archivos generados por el programa (data/), los archivos que se crean como ejecutable o objeto (exec/ y obj/) y el archivo log.txt haremos uso de `make clean`.
+
+Por último, si queremos eliminar la carpeta donde se guardan los archivos de Backup, haremos uso de `make cleanBackup`.
 
 ## Versiones  
 ### v1.1  
