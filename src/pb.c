@@ -95,7 +95,6 @@ void copyExams(struct Estudiantes *p_student_list)
 
         snprintf(command, sizeof (command), "/bin/cp %s %s", exam, dir);
         system(command);
-        /*comprobar que se haya realizado correctamente*/
     }
 }
 
